@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
+import { render } from 'react-dom';
+import { all as axiosAll, get as axiosGet, spread as axiosSpread } from 'axios';
 import TimeAgo from 'react-timeago';
 import ReactMarkdown from 'react-markdown';
 
@@ -23,7 +23,6 @@ export default class toCluster extends React.Component {
     let stateVar = {
       fetchingData: true,
       dataJSON: {},
-      optionalConfigJSON: {},
       languageTexts: undefined,
       siteConfigs: this.props.siteConfigs
     };
@@ -34,9 +33,10 @@ export default class toCluster extends React.Component {
       stateVar.languageTexts = this.getLanguageTexts(this.props.dataJSON.data.language);
     }
 
-    if (this.props.optionalConfigJSON) {
-      stateVar.optionalConfigJSON = this.props.optionalConfigJSON;
+    if (this.props.siteConfigs) {
+      stateVar.siteConfigs = this.props.siteConfigs;
     }
+    
 
     this.state = stateVar;
     this.processLink = this.processLink.bind(this);
@@ -49,18 +49,17 @@ export default class toCluster extends React.Component {
   componentDidMount() {
     if (this.state.fetchingData) {
       let items_to_fetch = [
-        axios.get(this.props.dataURL)
+        axiosGet(this.props.dataURL)
       ];
 
       if (this.props.siteConfigURL) {
-        items_to_fetch.push(axios.get(this.props.siteConfigURL));
+        items_to_fetch.push(axiosGet(this.props.siteConfigURL));
       }
 
-      axios.all(items_to_fetch).then(axios.spread((card, site_configs) => {
+      axiosAll(items_to_fetch).then(axiosSpread((card, site_configs) => {
         let stateVar = {
           fetchingData: false,
           dataJSON: card.data,
-          optionalConfigJSON:{},
           siteConfigs: site_configs ? site_configs.data : this.state.siteConfigs
         };
 
