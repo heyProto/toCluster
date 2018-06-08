@@ -1,20 +1,19 @@
 import React from 'react';
-import { render } from 'react-dom';
 import { all as axiosAll, get as axiosGet, spread as axiosSpread } from 'axios';
 import TimeAgo from 'react-timeago';
 import ReactMarkdown from 'react-markdown';
 
-class SpanRenderer extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+// class SpanRenderer extends React.Component {
+//   constructor(props) {
+//     super(props)
+//   }
 
-  render() {
-    return(
-      <span>{JSON.stringify(this.props)}</span>
-    )
-  }
-}
+//   render() {
+//     return(
+//       <span>{JSON.stringify(this.props)}</span>
+//     )
+//   }
+// }
 
 export default class toCluster extends React.Component {
 
@@ -36,7 +35,7 @@ export default class toCluster extends React.Component {
     if (this.props.siteConfigs) {
       stateVar.siteConfigs = this.props.siteConfigs;
     }
-    
+
 
     this.state = stateVar;
     this.processLink = this.processLink.bind(this);

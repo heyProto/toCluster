@@ -1,5 +1,4 @@
 import React from 'react';
-import { render } from 'react-dom';
 import { all as axiosAll, get as axiosGet, spread as axiosSpread } from 'axios';
 import Card from './card.jsx';
 import JSONSchemaForm from '../../lib/js/react-jsonschema-form';
