@@ -19,7 +19,7 @@ function renderWithMode(mode) {
 
 function getScriptString(mode, dataJSON, selector, site_configs) {
     return `<script>
-            var x = new ProtoGraph.Card.ComposeCard(),
+            var x = new ProtoGraph.Card.toCluster(),
                 params = {
                     "selector": document.querySelector('${selector}'),
                     "isFromSSR": true,
