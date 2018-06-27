@@ -1,5 +1,5 @@
 import React from 'react';
-import { render as ReactDOMRender, hydrate as ReactDOMHydrate } from 'react-dom';
+import { render, hydrate } from 'react-dom';
 import Card from './src/js/card.jsx';
 
 window.ProtoGraph = window.ProtoGraph || {};
@@ -38,15 +38,15 @@ ProtoGraph.Card.toCluster.prototype.renderScreenshot = function(data) {
 
 ProtoGraph.Card.toCluster.prototype.render = function() {
     if(this.options.isFromSSR){
-        ReactDOMHydrate(
+        hydrate(
             <Card
-                mode={this.mode}
+                mode={this.mode || "col3"}
                 dataJSON={this.options.initialState.dataJSON}
             />,
             this.options.selector
         );
     } else {
-        ReactDOMRender(
+        render(
             <Card
                 dataURL = { this.options.data_url }
                 schemaURL = { this.options.schema_url }
