@@ -4,6 +4,10 @@ import Cluster from './src/js/card.jsx'
 
 global.window = {}
 
+function getInstance(){
+    return new ProtoGraph.Card.toStory();
+}
+
 function renderWithMode(mode) {
     switch (mode) {
         case "col7":
@@ -46,5 +50,6 @@ function render(mode, initialState) {
 
 module.exports = {
     render: render,
-    getScriptString: getScriptString
+    getScriptString: getScriptString,
+    getInstance: getInstance
 }
