@@ -32,11 +32,10 @@ global.window = {};
 //     `
 // }
 
-function render(mode, initialState) {
+function render(initialState) {
     let content = renderToString(
         <Cluster
             dataJSON={initialState.dataJSON}
-            mode={mode}
             renderingSSR={true}
         />
     );

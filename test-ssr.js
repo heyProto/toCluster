@@ -40,4 +40,5 @@ var state = {
         }
     }
 }
-SSR.render("col3", state)
+let x = SSR.render(state)
+console.log(x)
