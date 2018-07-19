@@ -36,6 +36,7 @@ function render(initialState) {
     let content = renderToString(
         <Cluster
             dataJSON={initialState.dataJSON}
+            mode={"col3"}
             renderingSSR={true}
         />
     );
