@@ -41,4 +41,4 @@ var state = {
     }
 }
 let x = SSR.render(state)
-console.log(x)
+console.log(x.content)
