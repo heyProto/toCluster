@@ -9,7 +9,7 @@
   </head>
   <body style="margin:0px">
     <div id="toCluster_card"></div>
-    <script src="https://dwln9tzsi7g07.cloudfront.net/lib/protograph-core.min.js"></script>
+    <script src="https://cdn.protograph.pykih.com/lib/protograph-core.min.js"></script>
     <script src = "card.min.js"></script>
     <script type="text/javascript">
     var x = new ProtoGraph.Card.toCluster();
@@ -42,7 +42,7 @@
 
             params = {
               selector: document.querySelector('#toCluster_card'),
-              data_url: data_base_path + "/data.json"
+              data_url:  "./sample.json"
             }
 
             if (options && options.headerJSON) {
@@ -68,7 +68,7 @@
                 clearInterval(intervalId);
               }
             } catch (err) {}
-          }, 10)
+          }, 1000)
         },
         change_mode: function(mode){
           renderWithMode(mode);
@@ -87,17 +87,7 @@
     });
 
     function renderWithMode(mode) {
-      switch(mode){
-        case "col7":
-          x.renderCol7();
-          break;
-        case "col4":
-          x.renderCol4();
-          break;
-        case "col3":
-          x.renderCol3();
-          break;
-      }
+      x.render();
     }
 
     </script>

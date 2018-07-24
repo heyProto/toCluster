@@ -10,7 +10,7 @@ export default class editToCluster extends React.Component {
       step: 1,
       dataJSON: {},
       mode: "col7",
-      publishing: false,
+      publishing: true,
       schemaJSON: undefined,
       fetchingData: true,
       uiSchemaJSON: {},
@@ -191,70 +191,24 @@ export default class editToCluster extends React.Component {
   }
 
   renderSchemaJSON() {
-    let schema;
-    switch(this.state.step){
-      case 1:
-        schema = JSON.parse(JSON.stringify(this.state.schemaJSON.properties.data))
-        delete schema.properties.analysis;
-        return schema;
-        break;
-      case 2:
-        schema = {
-          properties: {
-            analysis: this.state.schemaJSON.properties.data.properties.analysis
-          },
-          "type": "object",
-        }
-        return schema;
-        break;
-    }
+    return this.state.schemaJSON.properties.data
+
   }
 
   renderFormData() {
-    switch(this.state.step) {
-      case 1:
-        return this.state.dataJSON.data;
-        break;
-      case 2:
-        return {analysis: this.state.dataJSON.data.analysis};
-        break;
-    }
+    return this.state.dataJSON.data;
   }
 
   showLinkText() {
-    switch(this.state.step) {
-      case 1:
-        return '';
-        break;
-      case 2:
-        return '< Back';
-        break;
-    }
+    return ""
   }
 
   showButtonText() {
-    switch(this.state.step) {
-      case 1:
-        return 'Next';
-        break;
-      case 2:
-        return 'Publish';
-        break;
-    }
+    return 'Publish';
   }
 
   getUISchemaJSON() {
-    switch (this.state.step) {
-      case 1:
-        return this.state.uiSchemaJSON.section1.data;
-        break;
-      case 2:
-        return this.state.uiSchemaJSON.section2.data;
-        break;
-      default:
-        return {};
-        break;
-    }
+    return this.state.uiSchemaJSON.data;
   }
 
   onPrevHandler() {
@@ -304,36 +258,13 @@ export default class editToCluster extends React.Component {
                   validate={this.formValidator}
                   formData={this.renderFormData()}>
                   <br/>
-                  <a id="protograph-prev-link" className={`${this.state.publishing ? 'protograph-disable' : ''}`} onClick={((e) => this.onPrevHandler(e))}>{this.showLinkText()} </a>
-                  <button type="submit" className={`${this.state.publishing ? 'ui primary loading disabled button' : ''} default-button protograph-primary-button`}>{this.showButtonText()}</button>
+                  <button type="submit" className='default-button protograph-primary-button'>{this.showButtonText()}</button>
                 </JSONSchemaForm>
               </div>
+
               <div className="twelve wide column proto-card-preview proto-share-card-div">
-                <div className="protograph-menu-container">
-                  <div className="ui compact menu">
-                    <a className={`item ${this.state.mode === 'col7' ? 'active' : ''}`}
-                      data-mode='col7'
-                      onClick={this.toggleMode}
-                    >
-                      col-7
-                    </a>
-                    <a className={`item ${this.state.mode === 'col4' ? 'active' : ''}`}
-                      data-mode='col4'
-                      onClick={this.toggleMode}
-                    >
-                      col-4
-                    </a>
-                    <a className={`item ${this.state.mode === 'col3' ? 'active' : ''}`}
-                      data-mode='col3'
-                      onClick={this.toggleMode}
-                    >
-                      col-3
-                    </a>
-                  </div>
-                </div>
                 <div className="protograph-app-holder">
                   <Card
-                    mode={this.state.mode}
                     dataJSON={this.state.dataJSON}
                     schemaJSON={this.state.schemaJSON}
                   />

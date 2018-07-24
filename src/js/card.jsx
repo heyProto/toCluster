@@ -76,10 +76,7 @@ export default class toCluster extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.mode === 'col2'){
-      this.ellipsizeTextBox();
-    }
-    if (this.state.siteConfigs.story_card_flip && this.state.dataJSON.data.summary) {
+    if (this.state.dataJSON.data.summary) {
       let elem = document.querySelector('.protograph-summary-text');
       this.multiLineTruncate(elem);
     }
@@ -132,28 +129,9 @@ export default class toCluster extends React.Component {
   //   }
   // }
 
-  ellipsizeTextBox() {
-    let container = this.props.selector.querySelector('.tostory-card-title h1'),
-      text = this.props.selector.querySelector('.tostory-card-title h1'),
-      // text = document.querySelector(`.protograph-${this.props.mode}-mode .protograph-tocluster-title`),
-      wordArray;
-    let headline = this.state.dataJSON.data.headline;
-    if(headline === '' || headline === undefined){
-      text.innerHTML='';
-    }else{
-      // Setting the string to work with edit mode.
-      text.innerHTML = this.state.dataJSON.data.headline;
-      wordArray = this.state.dataJSON.data.headline.split(' ');
-      while (container.offsetHeight > 80) {
-        wordArray.pop();
-        text.innerHTML = wordArray.join(' ') + '...';
-      }
-    }
-  }
-
   handleClick(){
     let url = this.state.dataJSON.data.links[0].link;
-    window.open(url,'_top');
+    window.open(url,'_blank');
   }
 
   // matchDomain(domain, url) {
@@ -220,21 +198,25 @@ export default class toCluster extends React.Component {
     } else {
       let data = this.state.dataJSON.data
       return(
-        <div className="pro-card toaggregation-card" onClick ={this.handleClick}>
-          <div className="context">
-            <div className="intersection-tag">
-              {data.series && <span>{data.series}</span>}
-              {data.series && data.genre && <span>&#x2027;</span>}
-              {data.series && data.genre &&<span>{data.genre}</span>}
-            </div>
-            <h1>{data.title}</h1>
-            <div className="publishing-info">
-              <div className="byline">
-                <div className="byline-name">{data.by_line}</div>
+        <div className="pro-col-3">
+          <a href={data.links[0].link} target='_blank' >
+            <div className="pro-card toaggregation-card">
+              <div className="context">
+                <div className="intersection-tag">
+                  {data.series && <span>{data.series}</span>}
+                  {data.series && data.genre && <span>&#x2027;</span>}
+                  {data.series && data.genre &&<span>{data.genre}</span>}
+                </div>
+                <h1>{data.title}</h1>
+                <div className="publishing-info">
+                  <div className="byline">
+                    <div className="byline-name">{data.by_line}</div>
+                  </div>
+                  <div className="timeline"><span>&#x2027;</span><TimeAgo component="span"  date={data.published_date} /></div>
+                </div>
               </div>
-              <div className="timeline"><span>&#x2027;</span><TimeAgo component="span"  date={data.published_date} /></div>
-            </div>	
-          </div>
+            </div>
+          </a>
         </div>
       )
     }

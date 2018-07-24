@@ -23,6 +23,11 @@
           "type": "string",
           "format": "date-time"
         },
+        "by_line": {
+          "id": "/properties/data/properties/by_line",
+          "title": "Byline",
+          "type": "string"
+        },
         "series":{
           "title": "Series",
           "type": "string",
