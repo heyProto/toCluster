@@ -40,7 +40,7 @@ export default class toCluster extends React.Component {
     }
 
     this.state = stateVar;
-    this.handleClick = this.handleClick.bind(this);
+    //this.handleClick = this.handleClick.bind(this);
   }
 
 
@@ -129,10 +129,29 @@ export default class toCluster extends React.Component {
   //   }
   // }
 
-  handleClick(){
-    let url = this.state.dataJSON.data.links[0].link;
-    window.open(url,'_blank');
-  }
+  // ellipsizeTextBox() {
+  //   let container = this.props.selector.querySelector('.tostory-card-title h1'),
+  //     text = this.props.selector.querySelector('.tostory-card-title h1'),
+  //     // text = document.querySelector(`.protograph-${this.props.mode}-mode .protograph-tocluster-title`),
+  //     wordArray;
+  //   let headline = this.state.dataJSON.data.headline;
+  //   if(headline === '' || headline === undefined){
+  //     text.innerHTML='';
+  //   }else{
+  //     // Setting the string to work with edit mode.
+  //     text.innerHTML = this.state.dataJSON.data.headline;
+  //     wordArray = this.state.dataJSON.data.headline.split(' ');
+  //     while (container.offsetHeight > 80) {
+  //       wordArray.pop();
+  //       text.innerHTML = wordArray.join(' ') + '...';
+  //     }
+  //   }
+  // }
+
+  //handleClick(){
+  //  let url = this.state.dataJSON.data.links[0].link;
+  //  window.open(url,'_top');
+  //}
 
   // matchDomain(domain, url) {
   //   let url_domain = this.getDomainFromURL(url).replace(/^(https?:\/\/)?(www\.)?/, ''),
@@ -199,7 +218,7 @@ export default class toCluster extends React.Component {
       let data = this.state.dataJSON.data
       return(
         <div className="pro-col-3">
-          <a href={data.links[0].link} target='_blank' >
+          <a href={this.state.dataJSON.data.links[0].link} target="_top" title={data.title}>
             <div className="pro-card toaggregation-card">
               <div className="context">
                 <div className="intersection-tag">
