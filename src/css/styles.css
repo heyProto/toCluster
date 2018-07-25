@@ -142,14 +142,16 @@ h1 {
 }
 
 .pro-col-3 .toaggregation-card .context h1 {
-    font-size: 16px;
+    letter-spacing: 0px;
+    font-size: 14px;
     color: black;
     margin: 0px;
-    line-height: 22px;
-    font-family: Avenir-Bold;
+    line-height: 20px;
+    font-family: AvenirLTStd-Book;
     overflow: hidden;
     display: inline-block;
     box-sizing: border-box;
+    font-weight: normal;
 }
 
 .pro-col-3 .toaggregation-card .context p {
