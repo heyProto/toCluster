@@ -17,6 +17,11 @@ ProtoGraph.Card.toCluster.prototype.getData = function (data) {
   return this.containerInstance.exportData();
 }
 
+ProtoGraph.Card.toCluster.prototype.renderCol3= function (data) {
+  this.mode = 'col3';
+  this.render();
+}
+
 ProtoGraph.Card.toCluster.prototype.render = function () {
   if (this.options.isFromSSR){
     hydrate(
@@ -33,6 +38,7 @@ ProtoGraph.Card.toCluster.prototype.render = function () {
         dataURL={this.options.data_url}
         selector={this.options.selector}
         domain={this.options.domain}
+        mode={this.mode}
         siteConfigURL={this.options.site_config_url}
         siteConfigs={this.options.site_configs}
         clickCallback={this.options.onClickCallback}

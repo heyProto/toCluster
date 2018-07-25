@@ -210,32 +210,40 @@ export default class toCluster extends React.Component {
   // }
 
 
+  renderHTML(data) {
+    if (this.state.fetchingData) {
+      return (<div></div>)
+    } else {
+      return (<a href={this.state.dataJSON.data.links[0].link} target="_top" title={data.title}>
+        <div className="pro-card toaggregation-card">
+          <div className="context">
+            <div className="intersection-tag">
+              {data.series && <span>{data.series}</span>}
+              {data.series && data.genre && <span>&#x2027;</span>}
+              {data.series && data.genre &&<span>{data.genre}</span>}
+            </div>
+            <h1>{data.title}</h1>
+            <div className="publishing-info">
+              <div className="byline">
+                <div className="byline-name">{data.by_line}</div>
+                <span>&#x2027;</span>
+              </div>
+              <div className="timeline"><TimeAgo component="span"  date={data.published_date} /></div>
+            </div>
+          </div>
+        </div>
+      </a>)
+    }
+  }
 
-  render() {
+  renderCol3() {
     if (this.state.fetchingData) {
       return (<div></div>)
     } else {
       let data = this.state.dataJSON.data
       return(
         <div className="pro-col-3">
-          <a href={this.state.dataJSON.data.links[0].link} target="_top" title={data.title}>
-            <div className="pro-card toaggregation-card">
-              <div className="context">
-                <div className="intersection-tag">
-                  {data.series && <span>{data.series}</span>}
-                  {data.series && data.genre && <span>&#x2027;</span>}
-                  {data.series && data.genre &&<span>{data.genre}</span>}
-                </div>
-                <h1>{data.title}</h1>
-                <div className="publishing-info">
-                  <div className="byline">
-                    <div className="byline-name">{data.by_line}</div>
-                  </div>
-                  <div className="timeline"><span>&#x2027;</span><TimeAgo component="span"  date={data.published_date} /></div>
-                </div>
-              </div>
-            </div>
-          </a>
+          {this.renderHTML(data)}
         </div>
       )
     }
@@ -258,6 +266,15 @@ export default class toCluster extends React.Component {
         break;
     }
     return text_obj;
+  }
+
+  render() {
+    switch(this.props.mode) {
+      case 'col3':
+        return this.renderCol3();
+      default:
+        return this.renderHTML(this.state.dataJSON.data);
+    }
   }
 
 }
