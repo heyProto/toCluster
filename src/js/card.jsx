@@ -224,11 +224,10 @@ export default class toCluster extends React.Component {
             </div>
             <h1>{data.title}</h1>
             <div className="publishing-info">
-              <div className="byline">
-                <div className="byline-name">{data.by_line}</div>
-                <span>&#x2027;</span>
-              </div>
-              <div className="timeline"><TimeAgo component="span"  date={data.published_date} /></div>
+              {data.by_line &&
+                <div className="byline"><div className="byline-name">{data.by_line}</div></div>
+              }
+              <div className="timeline">{data.by_line && <span>&#x2027;</span>}<TimeAgo component="span"  date={data.published_date} /></div>
             </div>
           </div>
         </div>
