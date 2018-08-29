@@ -218,9 +218,10 @@ export default class toCluster extends React.Component {
         <div className="pro-card toaggregation-card">
           <div className="context">
             <div className="intersection-tag">
-              {data.series && <span>{data.series}</span>}
+              {/* Commenting out SERIES | GENRE since data points are missing in cards for now */}
+              {/* {data.series && <span>{data.series}</span>}
               {data.series && data.genre && <span>&#x2027;</span>}
-              {data.series && data.genre &&<span>{data.genre}</span>}
+              {data.series && data.genre &&<span>{data.genre}</span>} */}
             </div>
             <h1>{data.title}</h1>
             <div className="publishing-info">
