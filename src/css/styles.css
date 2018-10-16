@@ -83,6 +83,11 @@ body {
   filter: grayscale(100%);
 }
 
+.protograph-tocluster-favicon:hover {
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+}
+
 .protograph-tocluster-favicons{
   position: absolute;
   right: 10px;
