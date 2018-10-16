@@ -22,6 +22,11 @@ ProtoGraph.Card.toCluster.prototype.renderCol3= function (data) {
   this.render();
 }
 
+ProtoGraph.Card.toCluster.prototype.renderCol4= function (data) {
+  this.mode = 'col4';
+  this.render();
+}
+
 ProtoGraph.Card.toCluster.prototype.render = function () {
   if (this.options.isFromSSR){
     hydrate(

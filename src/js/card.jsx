@@ -260,6 +260,20 @@ export default class toCluster extends React.Component {
         <div className="pro-col-3">
           {this.renderHTML(data)}
         </div>
+        
+      )
+    }
+  }
+
+  renderCol4() {
+    if (this.state.fetchingData) {
+      return (<div></div>)
+    } else {
+      let data = this.state.dataJSON.data
+      return(
+          <div className="pro-col-4">
+            {this.renderHTML(data)}
+          </div>     
       )
     }
   }
@@ -287,6 +301,8 @@ export default class toCluster extends React.Component {
     switch(this.props.mode) {
       case 'col3':
         return this.renderCol3();
+      case 'col4':
+        return this.renderCol4();
       default:
         return this.renderHTML(this.state.dataJSON.data);
     }

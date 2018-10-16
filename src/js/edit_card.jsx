@@ -264,9 +264,32 @@ export default class editToCluster extends React.Component {
 
               <div className="twelve wide column proto-card-preview proto-share-card-div">
                 <div className="protograph-app-holder">
+                <div className="protograph-menu-container">
+                  <div className="ui compact menu">
+                    <a className={`item ${this.state.mode === 'col3' ? 'active' : ''}`}
+                      data-mode='col3'
+                      onClick={this.toggleMode}
+                    >
+                      col-3
+                    </a>
+                    <a className={`item ${this.state.mode === 'col4' ? 'active' : ''}`}
+                      data-mode='col4'
+                      onClick={this.toggleMode}
+                    >
+                      col-4
+                    </a>
+                    <a className={`item ${this.state.mode === 'col7' ? 'active' : ''}`}
+                      data-mode='col7'
+                      onClick={this.toggleMode}
+                    >
+                      col-7
+                    </a>
+                  </div>
+                </div>
                   <Card
                     dataJSON={this.state.dataJSON}
                     schemaJSON={this.state.schemaJSON}
+                    mode={this.state.mode}
                   />
                 </div>
               </div>
