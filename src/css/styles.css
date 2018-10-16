@@ -78,6 +78,27 @@ body {
     margin-right: 0px !important;
 }
 
+.protograph-tocluster-greyscale {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+
+.protograph-tocluster-favicons{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.protograph-tocluster-favicons .protograph-tocluster-favicon-link,
+.protograph-tocluster-favicons .protograph-tocluster-favicon {
+  height: 12px;
+  width: 12px;
+  float: left;
+  border-radius: 50px;
+  margin-left: 3px;
+}
+
+
 @media screen and (max-width: 500px) {
     .pro-container {
         width: 100vw;

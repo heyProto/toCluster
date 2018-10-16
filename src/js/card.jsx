@@ -230,6 +230,21 @@ export default class toCluster extends React.Component {
               }
               <div className="timeline">{data.by_line && <span>&#x2027;</span>}<TimeAgo component="span"  date={data.published_date} /></div>
             </div>
+            <div className="protograph-tocluster-favicons">
+              {
+                data.links.map((e, i) => {
+                  let greyscale = "";
+                  if (i > 0) {
+                    greyscale = "protograph-tocluster-greyscale"
+                  }
+                  return (
+                    <a key={i} href={e.link} target="_blank" className="protograph-tocluster-favicon-link">
+                      <img className={`protograph-tocluster-favicon ${greyscale}`} src={e.favicon_url} />
+                    </a>
+                  )
+                })
+              }
+            </div>
           </div>
         </div>
       </a>)
