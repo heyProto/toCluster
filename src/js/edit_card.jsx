@@ -78,7 +78,7 @@ export default class editToCluster extends React.Component {
         e.favicon_url = linkDetails.favicon_url;
         e.publication_name = linkDetails.name;
       } else if (is_url_valid) {
-        e.favicon_url = "https://cdn.protograph.pykih.com/lib/toCluster_default_favicon.png";
+        e.favicon_url = "https://utils.pro.to/lib/toCluster_default_favicon.png";
         e.publication_name = this.parseUrl(e.link).hostname;
       }
     });
